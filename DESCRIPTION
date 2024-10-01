@@ -1,0 +1,22 @@
+Package: LinearRegression
+Title: Handling linear regression models
+Version: 1.0
+Date: 2024-10-01
+Description: This R package provides functionality for handling linear regression 
+    models through the utilization of QR decomposition. This package is a 
+    part of the coursework for the Advanced Programming in R course (732A94) at 
+    Linköping University.
+RoxygenNote: 7.3.2
+Encoding: UTF-8
+License: GPL-2
+Authors@R: c(
+    person("Linn", "Frisell", email = "linfr259@student.liu.se", role = "cre"),
+    person("John", "Möller", email = "johmo@student.liu.se", role = "aut"))
+Maintainer: Linn F. <linfr259@student.liu.se>
+Roxygen: list(markdown = TRUE)
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Imports: 
+    ggplot2,
+    stats
