@@ -1,57 +1,29 @@
-library(ggplot2)
-library(showtext)
+#' LiU Theme and Color Palette with Custom Font
+#'
+#' A custom theme and color palette based on the LiU style, with the 'calibri' font.
+#' This function applies both a custom ggplot theme and a manual color scale.
+#'
+#' @return A list containing the custom theme, color scale, and font settings.
+#' @export
+#' @examples
+#' ggplot(mtcars, aes(x = wt, y = mpg, color = as.factor(cyl))) +
+#' geom_point() +
+#' LiU_theme_and_colors()
 
-setwd("/home/johmo870/Desktop/LinearRegression-1/")
-
-# Enable Calibri font
-showtext_auto()
-font_add(family = "calibri", regular = "calibri.ttf")
-font_add(family = "georgia", regular = "georgia.ttf")
-
-# Custom theme
-custom_theme <- theme_minimal() +
-  theme(
-    text = element_text(family = "calibri"),
-    plot.background = element_rect(fill = "#d2eef9"),
-    #panel.background = element_rect(fill = "#d2eef9"),
-    #panel.grid.major = element_line(color = "#687f91"),
-    axis.title = element_text(color = "#ff6442"),
-    axis.text = element_text(color = "#8781d3"),
-    plot.title = element_text(color = "#fcf05f", hjust = 0.5)
+LiU_theme_and_colors <- function() {
+  # Enable showtext for custom fonts
+  showtext_auto()
+  
+  # Add the 'calibri' font from the package
+  font_add(family = "calibri", regular = system.file("fonts", "calibri.ttf", package = "LiUTheme"))
+  
+  list(
+    theme_grey() + 
+      theme(text = element_text(family = "calibri"),
+            panel.background = element_rect(fill = "#bde6f6", color = NA),
+            plot.background = element_rect(fill = "#d2eef9", color = NA),
+            legend.background = element_rect(fill = "#bde6f6", color = NA)
+      ),
+    scale_color_manual(values = c("#ff6442", "#8781d3", "#fcf05f", "#687f91"))
   )
-
-theme_custom <- theme_grey() + 
-  theme(text = element_text(family = "calibri"),
-        panel.background = element_rect(fill = "#bde6f6", color = NA),
-        plot.background = element_rect(fill = "#d2eef9", color = NA),
-        legend.background = element_rect(fill = "#bde6f6", color = NA)
-        )
-
-# Example plot
-ggplot(mpg, aes(displ, hwy, color = factor(cyl))) +
-  geom_point(size = 3) +
-  scale_color_manual(values = c("#ff6442", "#8781d3", "#fcf05f", "#687f91")) +
-  ggtitle("My title") +
-  theme_custom
-
-
-# Use grDevices to adjust the color
-lighter_bg_color <- grDevices::adjustcolor("#0cc7d3", alpha.f = 0.8) # 20% towards white
-
-# Update the theme with the new color
-custom_theme <- theme_minimal() +
-  theme(
-    text = element_text(family = "calibri"),
-    plot.background = element_rect(fill = lighter_bg_color),
-    panel.background = element_rect(fill = lighter_bg_color),
-    panel.grid.major = element_line(color = "#687f91"),
-    axis.title = element_text(color = "#ff6442"),
-    axis.text = element_text(color = "#8781d3"),
-    plot.title = element_text(color = "#fcf05f", hjust = 0.5)
-  )
-
-# Example plot
-ggplot(mpg, aes(displ, hwy, color = factor(cyl))) +
-  geom_point(size = 3) +
-  scale_color_manual(values = c("#ff6442", "#8781d3", "#fcf05f", "#687f91")) +
-  custom_theme
+}
