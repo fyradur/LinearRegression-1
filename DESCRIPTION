@@ -15,8 +15,12 @@ Authors@R: c(
 Maintainer: Linn F. <linfr259@student.liu.se>
 Roxygen: list(markdown = TRUE)
 Suggests: 
+    knitr,
+    rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports: 
     ggplot2,
-    stats
+    stats,
+    gridExtra
+VignetteBuilder: knitr

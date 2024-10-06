@@ -1,0 +1,79 @@
+---
+title: "linreg function"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{linreg function}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+```
+
+```{r setup}
+library(LinearRegression)
+
+```
+
+# Overview
+
+The `linreg` function fits a linear regression model using QR decomposition and implements various S3 methods such as `print()`, `plot()`, `resid()`, `pred()`, `coef()`, and `summary()`. A description of the QR decomposition can be found [here](https://pages.stat.wisc.edu/~st849-1/lectures/Orthogonal.pdf).
+
+We will demonstrate how to use the `linreg` function on the `iris` dataset.
+
+# Example: Fitting a Model
+
+We will fit a simple linear regression model predicting `Sepal.Width` based on `Species`.
+
+```{r}
+# Load the iris dataset
+data(iris)
+
+# Fit the linear model
+model <- linreg(Sepal.Width ~ Species, data = iris)
+
+# Print the model
+print(model)
+
+```
+
+# Residuals and Predictions
+
+We can obtain the residuals and predicted values in the following way:
+
+```{r}
+coefficients <- coef(model)
+residuals <- resid(model)
+predictions <- pred(model)
+head(coefficients)
+head(residuals)
+head(predictions)
+
+```
+
+# Summary of the Model
+
+The summary method provides information about the coefficients, their standard errors, t-values, and p-values.
+
+```{r}
+summary(model)
+
+```
+
+# Plotting the Model
+
+The `plot()` method provides residuals vs fitted values and standardized residuals vs fitted values (Scale-Location) plots.
+
+```{r, fig.dim = c(7, 9)}
+plot(model)
+
+```
+
+# Conclusion
+
+This vignette demonstrates the basic usage of the `linreg` function and its associated S3 methods. You can use this function to perform linear regression analysis in a simple and flexible way.

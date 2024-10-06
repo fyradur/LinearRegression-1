@@ -64,7 +64,14 @@ linreg <- function(formula, data) {
 #' Prints out the coefficients and coefficient names.
 #'
 #' @param x An S3 object of class linreg.
-#' @export print.linreg
+#' @export print
+print <- function(x) {
+  UseMethod("print")
+}
+
+#' @rdname print
+#'
+#' @export
 print.linreg <- function(x) {
   cat(paste0("linreg(formula = ", deparse(x$formula), ", data = ", x$name, ")"))
   cat("\n\nCoefficients:\n")
@@ -77,7 +84,7 @@ print.linreg <- function(x) {
 #' Plots the Residuals vs. Fitted & Scale-Location plots with ggplot2.
 #'
 #' @param x An S3 object of class linreg.
-#' @export plot.linreg
+#' @export plot
 #' @importFrom ggplot2 aes
 #' @importFrom ggplot2 geom_point
 #' @importFrom ggplot2 geom_hline
@@ -86,7 +93,14 @@ print.linreg <- function(x) {
 #' @importFrom ggplot2 theme_minimal
 #' @importFrom ggplot2 geom_text
 #' @importFrom stats median
+#' @importFrom gridExtra grid.arrange
+plot <- function(x) {
+  UseMethod("plot")
+}
 
+#' @rdname plot
+#'
+#' @export
 plot.linreg <- function(x) {
   data <- x$data
   y_hat <- x$fitted_values
@@ -137,15 +151,21 @@ plot.linreg <- function(x) {
     theme_minimal()
 
   # Plot both plots
-  print(p1)
-  print(p2)
+  gridExtra::grid.arrange(p1, p2, nrow = 2)
 }
 
 #' Residuals method for linreg class
 #'
 #' @param x An S3 object of class linreg.
 #' @return A vector of residuals.
-#' @export resid.linreg
+#' @export resid
+resid <- function(x) {
+  UseMethod("resid")
+}
+
+#' @rdname resid
+#'
+#' @export
 resid.linreg <- function(x) {
   return(as.vector(x$residuals))
 }
@@ -154,7 +174,15 @@ resid.linreg <- function(x) {
 #'
 #' @param x An S3 object of class linreg.
 #' @return A named vector of coefficients.
-#' @export coef.linreg
+#' @export coef
+coef <- function(x) {
+  UseMethod("coef")
+}
+
+#' @rdname coef
+#'
+#' @export
+
 coef.linreg <- function(x) {
   coeff <- as.vector(x$coefficients)
   names(coeff) <- "Coefficients"
@@ -163,8 +191,16 @@ coef.linreg <- function(x) {
 
 #' Summary method for linreg class
 #' @param x An S3 object of class linreg.
-#' @export summary.linreg
+#' @export summary
 #' @importFrom stats pt
+summary <- function(x) {
+  UseMethod("summary")
+}
+
+#' @rdname summary
+#'
+#' @export
+
 summary.linreg <- function(x) {
   # Calculate standard errors, t-values, and p-values
   se <- sqrt(diag(x$var_beta))
@@ -209,7 +245,7 @@ summary.linreg <- function(x) {
 #' Predicted values method for linreg class
 #' @param x An S3 object of class linreg.
 #' @return A vector of predicted values.
-#' @export pred.linreg
+#' @export pred
 pred <- function(x) {
   UseMethod("pred")
 }
