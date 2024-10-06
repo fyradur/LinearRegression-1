@@ -7,7 +7,10 @@
 \method{coef}{linreg}(x)
 }
 \arguments{
-\item{x}{An object of class linreg.}
+\item{x}{An S3 object of class linreg.}
+}
+\value{
+A named vector of coefficients.
 }
 \description{
 Coefficients method for linreg class

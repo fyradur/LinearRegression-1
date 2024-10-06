@@ -7,8 +7,8 @@
 \method{plot}{linreg}(x)
 }
 \arguments{
-\item{x}{An object of class linreg.}
+\item{x}{An S3 object of class linreg.}
 }
 \description{
-Plot method for linreg class
+Plots the Residuals vs. Fitted & Scale-Location plots with ggplot2.
 }

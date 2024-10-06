@@ -7,8 +7,8 @@
 \method{print}{linreg}(x)
 }
 \arguments{
-\item{x}{An object of class linreg.}
+\item{x}{An S3 object of class linreg.}
 }
 \description{
-Print method for linreg class
+Prints out the coefficients and coefficient names.
 }

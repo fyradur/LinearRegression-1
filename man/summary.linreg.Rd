@@ -7,7 +7,7 @@
 \method{summary}{linreg}(x)
 }
 \arguments{
-\item{x}{An object of class linreg.}
+\item{x}{An S3 object of class linreg.}
 }
 \description{
 Summary method for linreg class

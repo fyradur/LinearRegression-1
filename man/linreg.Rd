@@ -12,8 +12,12 @@ linreg(formula, data)
 \item{data}{A data frame containing the variables in the model.}
 }
 \value{
-An object of class linreg containing the fitted model.
+An S3 object of class linreg containing the fitted model.
 }
 \description{
 Fits a linear regression model using QR decomposition.
+}
+\details{
+A description of the QR decomposition can be found here:
+https://pages.stat.wisc.edu/~st849-1/lectures/Orthogonal.pdf
 }
