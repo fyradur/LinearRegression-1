@@ -8,10 +8,7 @@ This [R](https://www.r-project.org) package provides functionality for handling 
 
 # Dependencies
 
-R (>= v3.5.0)
-ggplot2
-stats
-gridExtra
+R (>= v3.5.0), ggplot2, stats, gridExtra
 
 # Installation
 
